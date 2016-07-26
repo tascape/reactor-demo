@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>com.tascape</groupId>
-            <artifactId>reactor-x-ios</artifactId>
+            <artifactId>reactor-x-ios-uiat</artifactId>
             <version>1.2.0</version>
             <type>jar</type>
         </dependency>
