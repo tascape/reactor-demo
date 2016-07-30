@@ -19,7 +19,7 @@ import com.tascape.demo.android.driver.FDroidApp;
 import com.tascape.demo.android.driver.Settings;
 import org.junit.Test;
 import com.tascape.reactor.android.driver.UiAutomatorDevice;
-import com.tascape.reactor.android.task.UiAutomatorTask;
+import com.tascape.reactor.android.task.UiAutomatorCase;
 import com.tascape.reactor.driver.CaseDriver;
 import com.tascape.reactor.task.AbstractCase;
 import java.util.Map;
@@ -39,7 +39,7 @@ import static com.tascape.demo.android.driver.Settings.UPDATE_INTERVALS;
  *
  * @author linsong wang
  */
-public class FDroidSettingsCases extends AbstractCase implements UiAutomatorTask {
+public class FDroidSettingsCases extends AbstractCase implements UiAutomatorCase {
     private static final Logger LOG = LoggerFactory.getLogger(FDroidSettingsCases.class);
 
     public static final CaseDriver MOBILE_DEVICE = new CaseDriver(FDroidSettingsCases.class, UiAutomatorDevice.class);

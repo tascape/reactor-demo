@@ -19,17 +19,17 @@ import com.tascape.demo.android.driver.FDroidApp;
 import com.tascape.demo.android.task.FDroidSettingsCases;
 import com.tascape.reactor.android.driver.App;
 import com.tascape.reactor.android.driver.UiAutomatorDevice;
-import com.tascape.reactor.android.suite.UiAutomatorTestSuite;
 import com.tascape.reactor.suite.AbstractSuite;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.commons.lang3.StringUtils;
+import com.tascape.reactor.android.suite.UiAutomatorSuite;
 
 /**
  *
  * @author linsong wang
  */
-public class FDroidSuite extends AbstractSuite implements UiAutomatorTestSuite {
+public class FDroidSuite extends AbstractSuite implements UiAutomatorSuite {
     private static final Logger LOG = LoggerFactory.getLogger(FDroidSuite.class);
 
     private final FDroidApp droid = new FDroidApp();
