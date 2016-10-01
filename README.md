@@ -14,7 +14,6 @@ mkdir -p ~/.reactor && cd ~/.reactor && wget https://raw.githubusercontent.com/t
 4. an empty report page will open in your default web browser (**bookmark this - [http://127.0.0.1:28088/rr/suites_result.xhtml]**)
 
 
-
 ###### See [https://github.com/tascape/reactor-report/tree/master/doc]. It is verified on macOS.
 
 
@@ -24,3 +23,4 @@ cd webui
 mvn clean install
 java -cp target/*:target/dependency/* com.tascape.demo.suite.JsonEditorOnlineSuite
 ```
+###### check [http://127.0.0.1:28088/rr/suites_result.xhtml]
