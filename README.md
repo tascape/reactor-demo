@@ -25,3 +25,6 @@ java -cp target/*:target/dependency/* com.tascape.demo.suite.JsonEditorOnlineSui
 ```
 ###### check [http://127.0.0.1:28088/rr/suites_result.xhtml]
 * tried on Firefox 46.0
+
+### page load time
+* install Firefox addon [https://addons.mozilla.org/en-US/firefox/addon/har-export-trigger/]
