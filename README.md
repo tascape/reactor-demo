@@ -18,6 +18,7 @@ mkdir -p ~/.reactor && cd ~/.reactor && wget https://raw.githubusercontent.com/t
 
 
 ## webui
+run basic demo
 ```
 cd webui
 mvn clean install
@@ -29,3 +30,7 @@ java -cp target/*:target/dependency/* com.tascape.demo.suite.JsonEditorOnlineSui
 ### page load time
 * install Firefox addon https://addons.mozilla.org/en-US/firefox/addon/firebug/
 * install Firefox addon https://addons.mozilla.org/en-US/firefox/addon/har-export-trigger/
+
+run page load time demo
+
+
