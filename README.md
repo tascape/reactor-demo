@@ -11,10 +11,10 @@ mkdir -p ~/.reactor && cd ~/.reactor && wget https://raw.githubusercontent.com/t
 
 3. wait - an Ubuntu VM will be created and configured with Java, Tomee, Nginx, MySQL, etc.
 
-4. an empty report page will open in your default web browser (**bookmark this - [http://127.0.0.1:28088/rr/suites_result.xhtml]**)
+4. an empty report page will open in your default web browser (**bookmark this - http://127.0.0.1:28088/rr/suites_result.xhtml**)
 
 
-###### see [https://github.com/tascape/reactor-report/tree/master/doc]. It is verified on macOS.
+###### see https://github.com/tascape/reactor-report/tree/master/doc. It is verified on macOS.
 
 
 ## webui
@@ -23,8 +23,9 @@ cd webui
 mvn clean install
 java -cp target/*:target/dependency/* com.tascape.demo.suite.JsonEditorOnlineSuite
 ```
-###### check [http://127.0.0.1:28088/rr/suites_result.xhtml]
+###### check http://127.0.0.1:28088/rr/suites_result.xhtml
 * tried on Firefox 46.0
 
 ### page load time
-* install Firefox addon [https://addons.mozilla.org/en-US/firefox/addon/har-export-trigger/]
+* install Firefox addon https://addons.mozilla.org/en-US/firefox/addon/firebug/
+* install Firefox addon https://addons.mozilla.org/en-US/firefox/addon/har-export-trigger/
