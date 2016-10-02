@@ -18,7 +18,8 @@ mkdir -p ~/.reactor && cd ~/.reactor && wget https://raw.githubusercontent.com/t
 
 
 ## webui
-run basic demo
+
+#### 1 run basic demo
 ```
 cd webui
 mvn clean install
@@ -27,7 +28,7 @@ java -cp target/*:target/dependency/* -Dreactor.comm.WEBBROWSER_TYPE=firefox com
 ###### check http://127.0.0.1:28088/rr/suites_result.xhtml
 * tried on Firefox 46.0
 
-### page load time
+#### 2 page load time
 * install Firefox addon https://addons.mozilla.org/en-US/firefox/addon/firebug/
 * install Firefox addon https://addons.mozilla.org/en-US/firefox/addon/har-export-trigger/
 
