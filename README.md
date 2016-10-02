@@ -22,7 +22,7 @@ run basic demo
 ```
 cd webui
 mvn clean install
-java -cp target/*:target/dependency/* com.tascape.demo.suite.JsonEditorOnlineSuite
+java -cp target/*:target/dependency/* -Dreactor.comm.WEBBROWSER_TYPE=firefox com.tascape.demo.suite.JsonEditorOnlineSuite
 ```
 ###### check http://127.0.0.1:28088/rr/suites_result.xhtml
 * tried on Firefox 46.0
@@ -32,5 +32,10 @@ java -cp target/*:target/dependency/* com.tascape.demo.suite.JsonEditorOnlineSui
 * install Firefox addon https://addons.mozilla.org/en-US/firefox/addon/har-export-trigger/
 
 run page load time demo
-
-
+```
+cd webui
+mvn clean install
+java -cp target/*:target/dependency/* com.tascape.demo.suite.PageLoadingSuite
+```
+###### check http://127.0.0.1:28088/rr/suites_result.xhtml
+* tried on Firefox 46.0
