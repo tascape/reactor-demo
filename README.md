@@ -24,6 +24,7 @@ mkdir -p ~/.reactor && cd ~/.reactor && wget https://raw.githubusercontent.com/t
 cd webui
 mvn clean install
 java -cp target/*:target/dependency/* -Dreactor.comm.WEBBROWSER_TYPE=firefox com.tascape.demo.suite.JsonEditorOnlineSuite
+java -cp target/*:target/dependency/* -Dreactor.comm.WEBBROWSER_TYPE=chrome com.tascape.demo.suite.JsonEditorOnlineSuite
 ```
 ###### check http://127.0.0.1:28088/rr/suites_result.xhtml
 * works on Firefox 46.0, Chrome 53.0
