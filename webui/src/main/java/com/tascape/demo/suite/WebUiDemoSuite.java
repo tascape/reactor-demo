@@ -16,40 +16,25 @@
  */
 package com.tascape.demo.suite;
 
-import com.tascape.demo.driver.JsonEditorOnline;
-import com.tascape.demo.task.JsonEditorOnlineParse;
 import com.tascape.reactor.suite.AbstractSuite;
 import com.tascape.reactor.webui.comm.WebBrowser;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author linsong wang
  */
-public class JsonEditorOnlineSuite extends WebUiDemoSuite {
-    private static final Logger LOG = LoggerFactory.getLogger(JsonEditorOnlineSuite.class);
-
-
-    private JsonEditorOnline editor;
+public abstract class WebUiDemoSuite extends AbstractSuite {
+    protected WebBrowser webBrowser;
 
     @Override
-    public void setUpCaseClasses() {
-        super.addCaseClass(JsonEditorOnlineParse.class);
+    public String getProjectName() {
+        return "reactor-demo-webui";
     }
 
     @Override
-    public String getProductUnderTask() {
-        return editor.getName();
-    }
-
-    @Override
-    protected void setUpEnvironment() throws Exception {
-        webBrowser = WebBrowser.newBrowser(false);
-        editor = new JsonEditorOnline();
-        editor.setWebBrowser(webBrowser);
-        editor.launch();
-
-        super.putCaseDirver(JsonEditorOnlineParse.DRIVER_JSON_EDITOR, editor);
+    protected void tearDownEnvironment() {
+        if (webBrowser != null) {
+            webBrowser.close();
+        }
     }
 }

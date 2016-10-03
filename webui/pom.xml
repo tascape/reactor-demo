@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.tascape</groupId>
         <artifactId>reactor-demo</artifactId>
-        <version>1.2.0</version>  
+        <version>1.2.1</version>  
     </parent>
 
     <groupId>com.tascape</groupId>
@@ -20,9 +20,19 @@
     <dependencies>
         <dependency>
             <groupId>com.tascape</groupId>
+            <artifactId>reactor</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tascape</groupId>
             <artifactId>reactor-x-webui</artifactId>
             <version>1.2.1</version>
-            <type>jar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.tascape</groupId>
+                    <artifactId>reactor</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 </project>

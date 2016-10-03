@@ -19,8 +19,6 @@ package com.tascape.demo.suite;
 import com.tascape.demo.driver.GoogleDotCom;
 import com.tascape.demo.task.PageLoading;
 import com.tascape.demo.task.PartialPageLoading;
-import com.tascape.reactor.suite.AbstractSuite;
-import com.tascape.reactor.webui.comm.Firefox;
 import com.tascape.reactor.webui.comm.WebBrowser;
 import com.tascape.reactor.webui.driver.DefaultWebApp;
 import org.slf4j.Logger;
@@ -30,10 +28,8 @@ import org.slf4j.LoggerFactory;
  *
  * @author linsong wang
  */
-public class PageLoadingSuite extends AbstractSuite {
+public class PageLoadingSuite extends WebUiDemoSuite {
     private static final Logger LOG = LoggerFactory.getLogger(PageLoadingSuite.class);
-
-    private Firefox firefox;
 
     @Override
     public void setUpCaseClasses() {
@@ -48,23 +44,16 @@ public class PageLoadingSuite extends AbstractSuite {
 
     @Override
     protected void setUpEnvironment() throws Exception {
-        firefox = WebBrowser.newFirefox(true);
+        webBrowser = WebBrowser.newFirefox(true);
 
         DefaultWebApp app = new DefaultWebApp();
-        app.setWebBrowser(firefox);
+        app.setWebBrowser(webBrowser);
         super.putCaseDirver(PageLoading.DRIVER_WEB_APP, app);
 
         GoogleDotCom google = new GoogleDotCom();
-        google.setWebBrowser(firefox);
+        google.setWebBrowser(webBrowser);
         super.putCaseDirver(PartialPageLoading.DRIVER_GOOGLE, google);
 
         app.launch();
-    }
-
-    @Override
-    protected void tearDownEnvironment() {
-        if (firefox != null) {
-            firefox.close();
-        }
     }
 }
