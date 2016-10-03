@@ -26,7 +26,7 @@ mvn clean install
 java -cp target/*:target/dependency/* -Dreactor.comm.WEBBROWSER_TYPE=firefox com.tascape.demo.suite.JsonEditorOnlineSuite
 ```
 ###### check http://127.0.0.1:28088/rr/suites_result.xhtml
-* works on Firefox 46.0
+* works on Firefox 46.0, Chrome 53.0
 
 #### 2. page load time
 * install Firefox addon https://addons.mozilla.org/en-US/firefox/addon/firebug/
