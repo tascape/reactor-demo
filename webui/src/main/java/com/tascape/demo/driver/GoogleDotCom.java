@@ -24,12 +24,10 @@ import org.slf4j.LoggerFactory;
  *
  * @author linsong wang
  */
-public class JsonEditorOnline extends WebApp {
-    private static final Logger LOG = LoggerFactory.getLogger(JsonEditorOnline.class);
+public class GoogleDotCom extends WebApp {
+    private static final Logger LOG = LoggerFactory.getLogger(GoogleDotCom.class);
 
-    public static final String URL = "http://www.jsoneditoronline.org";
-
-    private HomePage home;
+    public static final String URL = "https://www.google.com";
 
     @Override
     public String getName() {
@@ -48,14 +46,7 @@ public class JsonEditorOnline extends WebApp {
 
     @Override
     public int getLaunchDelayMillis() {
-        return 5000;
-    }
-
-    public HomePage home() throws Exception {
-        if (home == null) {
-            home = this.open(HomePage.class);
-        }
-        return home;
+        return 2000;
     }
 
     @Override

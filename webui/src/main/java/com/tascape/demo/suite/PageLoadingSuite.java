@@ -16,7 +16,9 @@
  */
 package com.tascape.demo.suite;
 
+import com.tascape.demo.driver.GoogleDotCom;
 import com.tascape.demo.task.PageLoading;
+import com.tascape.demo.task.PartialPageLoading;
 import com.tascape.reactor.suite.AbstractSuite;
 import com.tascape.reactor.webui.comm.Firefox;
 import com.tascape.reactor.webui.comm.WebBrowser;
@@ -33,25 +35,30 @@ public class PageLoadingSuite extends AbstractSuite {
 
     private Firefox firefox;
 
-    private final DefaultWebApp app = new DefaultWebApp();
-
     @Override
     public void setUpCaseClasses() {
         super.addCaseClass(PageLoading.class);
+        super.addCaseClass(PartialPageLoading.class);
     }
 
     @Override
     public String getProductUnderTask() {
-        return app.getName();
+        return "PageLoading";
     }
 
     @Override
     protected void setUpEnvironment() throws Exception {
         firefox = WebBrowser.newFirefox(true);
-        app.setWebBrowser(firefox);
-        app.launch(DefaultWebApp.URL);
 
+        DefaultWebApp app = new DefaultWebApp();
+        app.setWebBrowser(firefox);
         super.putCaseDirver(PageLoading.DRIVER_WEB_APP, app);
+
+        GoogleDotCom google = new GoogleDotCom();
+        google.setWebBrowser(firefox);
+        super.putCaseDirver(PartialPageLoading.DRIVER_GOOGLE, google);
+
+        app.launch();
     }
 
     @Override

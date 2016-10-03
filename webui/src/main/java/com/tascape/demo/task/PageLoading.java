@@ -19,6 +19,7 @@ package com.tascape.demo.task;
 import com.tascape.reactor.driver.CaseDriver;
 import com.tascape.reactor.task.AbstractCase;
 import com.tascape.reactor.webui.driver.DefaultWebApp;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +40,7 @@ public class PageLoading extends AbstractCase {
 
     public PageLoading() throws InterruptedException {
         this.app = super.getEntityDriver(DRIVER_WEB_APP);
-        app.relaunch();
+        app.getWebBrowser().setDefaultTimeouts();
     }
 
     @Override
@@ -49,27 +50,30 @@ public class PageLoading extends AbstractCase {
 
     @Before
     public void setup() throws Exception {
+    }
+
+    @After
+    public void cleanup() throws Exception {
         app.takeBrowerScreenshot();
-        app.getWebBrowser().setDefaultTimeouts();
     }
 
     @Test
     public void searchGoogle() throws Exception {
-        int time = app.getWebBrowser().getPageLoadTimeMillis("https://www.google.com/#newwindow=1&q=tascape");
+        int time = app.getPageLoadTimeMillis("https://www.google.com/#newwindow=1&q=tascape");
         this.putResultMetric("page-loading", "google", time);
         Assert.assertTrue("Fail to load in 5 seconds", time < 5000);
     }
 
     @Test
     public void loadJsonEditorOnline() throws Exception {
-        int time = app.getWebBrowser().getPageLoadTimeMillis("http://www.jsoneditoronline.org/");
+        int time = app.getPageLoadTimeMillis("http://www.jsoneditoronline.org/");
         this.putResultMetric("page-loading", "jsoneditoronline", time);
         Assert.assertTrue("Fail to load in 5 seconds", time < 5000);
     }
 
     @Test
     public void loadNetflix() throws Exception {
-        int time = app.getWebBrowser().getPageLoadTimeMillis("https://www.netflix.com/");
+        int time = app.getPageLoadTimeMillis("https://www.netflix.com/");
         this.putResultMetric("page-loading", "netflix", time);
         Assert.assertTrue("Fail to load in 5 seconds", time < 5000);
     }

@@ -21,6 +21,7 @@ import com.tascape.demo.driver.HomePage;
 import com.tascape.demo.suite.JsonEditorOnlineSuite;
 import com.tascape.reactor.driver.CaseDriver;
 import com.tascape.reactor.task.AbstractCase;
+import java.time.LocalDateTime;
 import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Before;
@@ -59,7 +60,8 @@ public class JsonEditorOnlineParse extends AbstractCase {
     public void parseJson() throws Exception {
         LOG.info("create a sample json string");
         JSONObject json = new JSONObject()
-            .put("name", "automated test");
+            .put("name", "automated test")
+            .put("time", LocalDateTime.now().toString());
         LOG.debug("{}", json.toString());
 
         LOG.info("Enter json string, and click right-arrow button");

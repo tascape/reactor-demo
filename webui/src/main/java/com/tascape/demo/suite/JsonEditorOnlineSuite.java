@@ -49,7 +49,7 @@ public class JsonEditorOnlineSuite extends AbstractSuite {
         webBrowser = WebBrowser.newBrowser(false);
         editor = new JsonEditorOnline();
         editor.setWebBrowser(webBrowser);
-        editor.launch(JsonEditorOnline.URL);
+        editor.launch();
 
         super.putCaseDirver(JsonEditorOnlineParse.DRIVER_JSON_EDITOR, editor);
     }
