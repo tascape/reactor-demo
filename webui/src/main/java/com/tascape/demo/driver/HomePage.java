@@ -16,11 +16,15 @@
  */
 package com.tascape.demo.driver;
 
+import com.tascape.reactor.Utils;
 import com.tascape.reactor.webui.driver.WebPage;
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.concurrent.TimeUnit;
+import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
@@ -33,6 +37,9 @@ import org.slf4j.LoggerFactory;
 public class HomePage extends WebPage {
     private static final Logger LOG = LoggerFactory.getLogger(HomePage.class);
 
+    @FindBy(xpath = "//div[@class='ace_content']")
+    private WebElement editorCotent;
+
     @FindBy(xpath = "//textarea[@class='ace_text-input']")
     private WebElement editor;
 
@@ -41,12 +48,26 @@ public class HomePage extends WebPage {
 
     public static final String XPATH_ERROR = "//pre[@class='error']";
 
-    public void parseJson(String json) throws IOException {
+    public void parseJson(String json) throws IOException, InterruptedException {
         webBrowser.clear(editor);
+
+        String content = editorCotent.getText();
+        if (!content.isEmpty()) {
+            LOG.debug("{}", content);
+            for (String l : IOUtils.readLines(new StringReader(content))) {
+                editor.sendKeys(Keys.ARROW_DOWN);
+            }
+            editor.sendKeys(Keys.ARROW_RIGHT);
+            for (int i = 0, j = content.length(); i < j; i++) {
+                editor.sendKeys(Keys.BACK_SPACE);
+            }
+        }
+
         webBrowser.takeBrowerScreenshot();
         editor.sendKeys(json);
         webBrowser.takeBrowerScreenshot();
         parse.click();
+        Utils.sleep(1000, "");
         webBrowser.takeBrowerScreenshot();
     }
 

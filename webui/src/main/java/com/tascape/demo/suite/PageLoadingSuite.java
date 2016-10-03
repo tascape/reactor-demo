@@ -16,10 +16,11 @@
  */
 package com.tascape.demo.suite;
 
-import com.tascape.demo.driver.JsonEditorOnline;
-import com.tascape.demo.task.JsonEditorOnlineParse;
+import com.tascape.demo.task.PageLoading;
 import com.tascape.reactor.suite.AbstractSuite;
+import com.tascape.reactor.webui.comm.Firefox;
 import com.tascape.reactor.webui.comm.WebBrowser;
+import com.tascape.reactor.webui.driver.DefaultWebApp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,37 +28,36 @@ import org.slf4j.LoggerFactory;
  *
  * @author linsong wang
  */
-public class JsonEditorOnlineSuite extends AbstractSuite {
-    private static final Logger LOG = LoggerFactory.getLogger(JsonEditorOnlineSuite.class);
+public class PageLoadingSuite extends AbstractSuite {
+    private static final Logger LOG = LoggerFactory.getLogger(PageLoadingSuite.class);
 
-    private WebBrowser webBrowser;
+    private Firefox firefox;
 
-    private JsonEditorOnline editor;
+    private final DefaultWebApp app = new DefaultWebApp();
 
     @Override
     public void setUpCaseClasses() {
-        super.addCaseClass(JsonEditorOnlineParse.class);
+        super.addCaseClass(PageLoading.class);
     }
 
     @Override
     public String getProductUnderTask() {
-        return editor.getName();
+        return app.getName();
     }
 
     @Override
     protected void setUpEnvironment() throws Exception {
-        webBrowser = WebBrowser.newBrowser(false);
-        editor = new JsonEditorOnline();
-        editor.setWebBrowser(webBrowser);
-        editor.launch(JsonEditorOnline.URL);
+        firefox = WebBrowser.newFirefox(true);
+        app.setWebBrowser(firefox);
+        app.launch(DefaultWebApp.URL);
 
-        super.putCaseDirver(JsonEditorOnlineParse.DRIVER_JSON_EDITOR, editor);
+        super.putCaseDirver(PageLoading.DRIVER_WEB_APP, app);
     }
 
     @Override
     protected void tearDownEnvironment() {
-        if (webBrowser != null) {
-            webBrowser.close();
+        if (firefox != null) {
+            firefox.close();
         }
     }
 }

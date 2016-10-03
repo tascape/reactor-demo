@@ -32,15 +32,15 @@ import org.slf4j.LoggerFactory;
  *
  * @author linsong wang
  */
-public class JsonEditorOnlinePageLoading extends AbstractCase {
+public class JsonEditorOnlineParse extends AbstractCase {
     private static final Logger LOG = LoggerFactory.getLogger(JsonEditorOnlineSuite.class);
 
-    public static final CaseDriver DRIVER_JSON_EDITOR = new CaseDriver(JsonEditorOnlinePageLoading.class,
+    public static final CaseDriver DRIVER_JSON_EDITOR = new CaseDriver(JsonEditorOnlineParse.class,
         JsonEditorOnline.class);
 
     private final JsonEditorOnline editor;
 
-    public JsonEditorOnlinePageLoading() {
+    public JsonEditorOnlineParse() {
         this.editor = super.getEntityDriver(DRIVER_JSON_EDITOR);
     }
 
