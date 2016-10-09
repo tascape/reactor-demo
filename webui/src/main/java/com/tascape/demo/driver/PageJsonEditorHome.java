@@ -34,8 +34,8 @@ import org.slf4j.LoggerFactory;
  *
  * @author linsong wang
  */
-public class HomePage extends WebPage {
-    private static final Logger LOG = LoggerFactory.getLogger(HomePage.class);
+public class PageJsonEditorHome extends WebPage {
+    private static final Logger LOG = LoggerFactory.getLogger(PageJsonEditorHome.class);
 
     @FindBy(xpath = "//div[@class='ace_content']")
     private WebElement editorCotent;

@@ -59,21 +59,21 @@ public class PageLoading extends AbstractCase {
 
     @Test
     public void searchGoogle() throws Exception {
-        int time = app.getPageLoadTimeMillis("https://www.google.com/#newwindow=1&q=tascape");
+        int time = app.getWebBrowser().getPageLoadTimeMillis("https://www.google.com/#newwindow=1&q=tascape");
         this.putResultMetric("page-loading", "google", time);
         Assert.assertTrue("Fail to load in 5 seconds", time < 5000);
     }
 
     @Test
     public void loadJsonEditorOnline() throws Exception {
-        int time = app.getPageLoadTimeMillis("http://www.jsoneditoronline.org/");
+        int time = app.getWebBrowser().getPageLoadTimeMillis("http://www.jsoneditoronline.org/");
         this.putResultMetric("page-loading", "jsoneditoronline", time);
         Assert.assertTrue("Fail to load in 5 seconds", time < 5000);
     }
 
     @Test
     public void loadNetflix() throws Exception {
-        int time = app.getPageLoadTimeMillis("https://www.netflix.com/");
+        int time = app.getWebBrowser().getPageLoadTimeMillis("https://www.netflix.com/");
         this.putResultMetric("page-loading", "netflix", time);
         Assert.assertTrue("Fail to load in 5 seconds", time < 5000);
     }

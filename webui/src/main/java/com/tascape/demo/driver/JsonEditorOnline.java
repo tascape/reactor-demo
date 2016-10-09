@@ -29,7 +29,7 @@ public class JsonEditorOnline extends WebApp {
 
     public static final String URL = "http://www.jsoneditoronline.org";
 
-    private HomePage home;
+    private PageJsonEditorHome home;
 
     @Override
     public String getName() {
@@ -51,9 +51,9 @@ public class JsonEditorOnline extends WebApp {
         return 5000;
     }
 
-    public HomePage home() throws Exception {
+    public PageJsonEditorHome home() throws Exception {
         if (home == null) {
-            home = this.open(HomePage.class);
+            home = this.open(PageJsonEditorHome.class);
         }
         return home;
     }

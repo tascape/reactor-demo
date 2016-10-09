@@ -17,11 +17,19 @@
 package com.tascape.demo.task;
 
 import com.tascape.demo.driver.GoogleDotCom;
+import com.tascape.demo.driver.PageGoogleMaps;
+import com.tascape.reactor.data.CaseDataProvider;
+import com.tascape.reactor.data.CaseIterationData;
 import com.tascape.reactor.driver.CaseDriver;
 import com.tascape.reactor.task.AbstractCase;
+import com.tascape.reactor.webui.comm.WebBrowser;
+import com.tascape.reactor.webui.comm.WebBrowser.Ajax;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +66,24 @@ public class PartialPageLoading extends AbstractCase {
     }
 
     @Test
-    public void searchGoogleNews() throws Exception {
-        LOG.warn("TODO");
+    @CaseDataProvider(klass = CaseIterationData.class, parameter = "8")
+    public void searchGoogleMaps() throws Exception {
+        PageGoogleMaps maps = google.open(PageGoogleMaps.class);
+        maps.search("food");
+        long start = System.currentTimeMillis();
+        Ajax click = new WebBrowser.AbstractAjax() {
+            @Override
+            public long doRequest() {
+                WebElement f = google.getWebBrowser().findElements(By.className("section-result")).get(1);
+                long start = System.currentTimeMillis();
+                f.click();
+                return start;
+            }
+        };
+        int time = google.getWebBrowser().getAjaxLoadTimeMillis(click);
+        long stop = System.currentTimeMillis();
+        LOG.debug("{} - {} = {}", stop, start, stop - start);
+        this.putResultMetric("page-loading", "partial", time);
+        Assert.assertTrue("Fail to load second search result in 20 seconds", time < 20000);
     }
 }

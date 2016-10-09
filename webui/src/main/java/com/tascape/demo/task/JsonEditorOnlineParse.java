@@ -17,7 +17,7 @@
 package com.tascape.demo.task;
 
 import com.tascape.demo.driver.JsonEditorOnline;
-import com.tascape.demo.driver.HomePage;
+import com.tascape.demo.driver.PageJsonEditorHome;
 import com.tascape.demo.suite.JsonEditorOnlineSuite;
 import com.tascape.reactor.driver.CaseDriver;
 import com.tascape.reactor.task.AbstractCase;
@@ -65,7 +65,7 @@ public class JsonEditorOnlineParse extends AbstractCase {
         LOG.debug("{}", json.toString());
 
         LOG.info("Enter json string, and click right-arrow button");
-        HomePage home = editor.home();
+        PageJsonEditorHome home = editor.home();
         home.parseJson(json.toString());
 
         LOG.info("Verify there is no error message on page");
