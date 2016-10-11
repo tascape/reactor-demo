@@ -18,7 +18,6 @@ package com.tascape.demo.suite;
 
 import com.tascape.demo.driver.JsonEditorOnline;
 import com.tascape.demo.task.JsonEditorOnlineParse;
-import com.tascape.reactor.suite.AbstractSuite;
 import com.tascape.reactor.webui.comm.WebBrowser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +28,6 @@ import org.slf4j.LoggerFactory;
  */
 public class JsonEditorOnlineSuite extends WebUiDemoSuite {
     private static final Logger LOG = LoggerFactory.getLogger(JsonEditorOnlineSuite.class);
-
 
     private JsonEditorOnline editor;
 

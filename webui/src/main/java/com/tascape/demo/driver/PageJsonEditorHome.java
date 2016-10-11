@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.IOUtils;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -77,8 +76,8 @@ public class PageJsonEditorHome extends WebPage {
     }
 
     @Override
-    protected void isLoaded() throws Error {
-        Assert.assertNotNull("Cannot find editor on page, assuming page is not loaded", editor);
+    public WebElement getPageLoadedElement() {
+        return editorCotent;
     }
 
     public boolean hasNoError() {

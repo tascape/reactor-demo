@@ -17,7 +17,6 @@
 package com.tascape.demo.driver;
 
 import com.tascape.reactor.webui.driver.WebPage;
-import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,14 +33,17 @@ public class PageGoogleMaps extends WebPage {
     @FindBy(xpath = "//input[@name='q']")
     private WebElement searchBox;
 
+    @FindBy(id = "searchbox-directions")
+    private WebElement searchBoxDir;
+
     @Override
     public String getPath() {
         return "/maps";
     }
 
     @Override
-    protected void isLoaded() throws Error {
-        Assert.assertNotNull("Cannot find search box on page", searchBox);
+    public WebElement getPageLoadedElement() {
+        return searchBoxDir;
     }
 
     public void search(String term) {
