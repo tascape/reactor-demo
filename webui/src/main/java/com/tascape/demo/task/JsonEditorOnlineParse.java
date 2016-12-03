@@ -52,7 +52,7 @@ public class JsonEditorOnlineParse extends AbstractCase {
 
     @Before
     public void setup() throws Exception {
-        editor.takeBrowerScreenshot();
+        editor.takeBrowserScreenshot();
         editor.getWebBrowser().setDefaultTimeouts();
     }
 
@@ -70,5 +70,11 @@ public class JsonEditorOnlineParse extends AbstractCase {
 
         LOG.info("Verify there is no error message on page");
         Assert.assertTrue("Error message found on page", home.hasNoError());
+    }
+
+    @Test
+    public void showInDiffScreenResolutions() throws Exception {
+        PageJsonEditorHome home = editor.home();
+        editor.getWebBrowser().takeBrowserScreenshots();
     }
 }

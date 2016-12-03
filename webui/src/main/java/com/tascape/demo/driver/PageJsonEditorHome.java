@@ -62,22 +62,17 @@ public class PageJsonEditorHome extends WebPage {
             }
         }
 
-        webBrowser.takeBrowerScreenshot();
+        webBrowser.takeBrowserScreenshot();
         editor.sendKeys(json);
-        webBrowser.takeBrowerScreenshot();
+        webBrowser.takeBrowserScreenshot();
         parse.click();
         Utils.sleep(1000, "");
-        webBrowser.takeBrowerScreenshot();
+        webBrowser.takeBrowserScreenshot();
     }
 
     @Override
     public String getPath() {
         return "/";
-    }
-
-    @Override
-    public WebElement getPageLoadedElement() {
-        return editorCotent;
     }
 
     public boolean hasNoError() {
@@ -86,6 +81,13 @@ public class PageJsonEditorHome extends WebPage {
             return this.webBrowser.findElements(By.xpath(XPATH_ERROR)).isEmpty();
         } finally {
             webBrowser.setDefaultTimeouts();
+        }
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+        if (editorCotent == null) {
+            throw new Error("Canot find editor content");
         }
     }
 }

@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.tascape</groupId>
             <artifactId>reactor-x-webui</artifactId>
-            <version>1.2.4</version>
+            <version>1.2.8</version>
         </dependency>
     </dependencies>
 </project>

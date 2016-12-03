@@ -41,13 +41,15 @@ public class PageGoogleMaps extends WebPage {
         return "/maps";
     }
 
-    @Override
-    public WebElement getPageLoadedElement() {
-        return searchBoxDir;
-    }
-
     public void search(String term) {
         searchBox.sendKeys(term);
         searchBox.sendKeys(Keys.RETURN);
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+        if (searchBoxDir == null) {
+            throw new Error("Canot find search box direction");
+        }
     }
 }
