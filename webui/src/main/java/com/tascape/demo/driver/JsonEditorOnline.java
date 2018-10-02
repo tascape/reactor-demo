@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 public class JsonEditorOnline extends WebApp {
     private static final Logger LOG = LoggerFactory.getLogger(JsonEditorOnline.class);
 
-    public static final String URL = "http://www.jsoneditoronline.org";
+    public static final String URL = "https://jsoneditoronline.org";
 
     private PageJsonEditorHome home;
 

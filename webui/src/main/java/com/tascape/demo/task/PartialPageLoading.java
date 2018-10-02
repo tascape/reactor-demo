@@ -62,7 +62,7 @@ public class PartialPageLoading extends AbstractCase {
 
     @After
     public void cleanup() throws Exception {
-        google.takeBrowerScreenshot();
+        google.takeBrowserScreenshot();
     }
 
     @Test

@@ -54,7 +54,7 @@ public class PageLoading extends AbstractCase {
 
     @After
     public void cleanup() throws Exception {
-        app.takeBrowerScreenshot();
+        app.takeBrowserScreenshot();
     }
 
     @Test
